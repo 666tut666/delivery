@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 
 
 
-class Order(Base):
+class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     username = Column(String(30), unique=True)
@@ -20,7 +20,7 @@ class Order(Base):
         return f"<User {self.username}>"
 
 
-class Choice(Base):
+class Order(Base):
 
     ORDER_STATUES=(
         ('PENDING','pending'),
