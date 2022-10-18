@@ -6,11 +6,11 @@ from schemas import Settings
 
 app = FastAPI()
 
-
 @AuthJWT.load_config
 def get_config():
     return Settings()
 
-
 app.include_router(auth_router)
 app.include_router(order_router)
+
+

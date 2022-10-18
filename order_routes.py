@@ -236,7 +236,7 @@ async def update_order_status(
         Authorize:AuthJWT=Depends()
 ):
     """
-          # Updating an order status
+          # Updating an order status using ID
           ### This updates order status
           ### AccessType: All Users
           ### Requires following
