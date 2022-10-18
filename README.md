@@ -1,5 +1,5 @@
-ROUTES TO IMPLEMENT
-METHOD	ROUTE	FUNCTIONALITY	ACCESS
+# ROUTES TO IMPLEMENT
+##METHOD	ROUTE	FUNCTIONALITY	ACCESS
 POST	/auth/signup/	Register new user	All users
 POST	/auth/login/	Login user	All users
 POST	/orders/order/	Place an order	All users
