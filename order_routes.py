@@ -36,6 +36,7 @@ async def hello(Authorize:AuthJWT=Depends()):
 async def place_an_order(order:OrderModel,Authorize:AuthJWT=Depends()):
     """
     # placing an order
+    ### Access Type: All Users
     ### This requires following
         - quantity : integer
         - pizza_size : string

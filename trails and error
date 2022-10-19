@@ -1,0 +1,110 @@
+Trail 1 :
+    error:
+        ============================ test session starts ============================
+platform win32 -- Python 3.9.7, pytest-7.1.3, pluggy-1.0.0
+rootdir: D:\work\pythonProject\delivery_api
+plugins: anyio-3.6.1
+collected 1 item
+
+test_order_routes.py F                                                 [100%]
+
+================================= FAILURES ==================================
+_____________________________ test_order_router _____________________________
+
+    def test_order_router():
+        response = client.post("/orders")
+>       assert response.status_code == 201
+E       assert 307 == 201
+E        +  where 307 = <Response [307]>.status_code
+
+test_order_routes.py:8: AssertionError
+========================== short test summary info ==========================
+FAILED test_order_routes.py::test_order_router - assert 307 == 201
+============================= 1 failed in 0.86s =============================
+
+
+
+
+
+Trail 2:
+    code:
+
+token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlcnVzZXIiLCJpYXQiOjE2NjYxNDcxNTAsIm5iZiI6MTY2NjE0NzE1MCwianRpIjoiYWRhYzZlZWMtMGVkZC00YjJkLTllYmQtNTMxYjNiMzY2OTk5IiwiZXhwIjoxNjY2MTQ4MDUwLCJ0eXBlIjoiYWNjZXNzIiwiZnJlc2giOmZhbHNlfQ.Ne3dYO2EObngUijMqs5VMcJ1YQJGDtUmL3QkOxcPtY4"
+
+def test_create_assignments():
+    userassignments = {
+        "username":"superuser",
+	    "password":"super_user"
+    }
+    response = client.post("/user/assignments",
+                           headers={"Authorization: Bearer ", token},
+                           json=userassignments)
+    assert response.status_code == 200
+
+
+Error:
+============================ test session starts ============================
+platform win32 -- Python 3.9.7, pytest-7.1.3, pluggy-1.0.0
+rootdir: D:\work\pythonProject\delivery_api
+plugins: anyio-3.6.1
+collected 2 items
+
+test_order_routes.py FF                                                [100%]
+
+================================= FAILURES ==================================
+__________________________ test_create_assignments __________________________
+
+    def test_create_assignments():
+        userassignments = {
+            "username":"superuser",
+            "password":"super_user"
+        }
+>       response = client.post("/user/assignments",
+                               headers={"Authorization: Bearer ", token},
+                               json=userassignments)
+
+test_order_routes.py:13:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+venv\lib\site-packages\requests\sessions.py:635: in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+venv\lib\site-packages\starlette\testclient.py:473: in request
+    return super().request(
+venv\lib\site-packages\requests\sessions.py:573: in request
+    prep = self.prepare_request(req)
+venv\lib\site-packages\requests\sessions.py:484: in prepare_request
+    p.prepare(
+venv\lib\site-packages\requests\models.py:369: in prepare
+    self.prepare_headers(headers)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <PreparedRequest [POST]>
+headers = {'Authorization: Bearer ', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ
+zdWIiOiJzdXBlcnVzZXIiLCJpYXQiOjE2NjYxNDcxNTAsIm5iZ...zY2OTk5IiwiZXhwIjoxNjY2MT
+Q4MDUwLCJ0eXBlIjoiYWNjZXNzIiwiZnJlc2giOmZhbHNlfQ.Ne3dYO2EObngUijMqs5VMcJ1YQJGD
+tUmL3QkOxcPtY4'}
+
+    def prepare_headers(self, headers):
+        """Prepares the given HTTP headers."""
+
+        self.headers = CaseInsensitiveDict()
+        if headers:
+>           for header in headers.items():
+E           AttributeError: 'set' object has no attribute 'items'
+
+venv\lib\site-packages\requests\models.py:489: AttributeError
+_____________________________ test_order_router _____________________________
+
+    def test_order_router():
+        response = client.post("/order")
+>       assert response.status_code == 201
+E       assert 404 == 201
+E        +  where 404 = <Response [404]>.status_code
+
+test_order_routes.py:19: AssertionError
+========================== short test summary info ==========================
+FAILED test_order_routes.py::test_create_assignments - AttributeError: 'set...
+FAILED test_order_routes.py::test_order_router - assert 404 == 201
+============================= 2 failed in 0.99s =============================
+
+Trail 2:
+
